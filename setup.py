@@ -6,11 +6,13 @@ build_dir = 'output'
 sources = []
 for root, dirs, files in os.walk(build_dir):
     for filename in files:
-        sources.append(build_dir + '/' + filename)
+        sources.append(
+            os.path.join(build_dir, filename)
+        )
 
-oculus = Extension('oculus',
+oculus = Extension('OVR',
                      sources = sources,
-                     include_dirs=['ovr_sdk_linux_0.4.4/LibOVR/Include', ])
+                     include_dirs=['ovr_sdk_linux_0.4.4/LibOVR/Include', 'ovr_sdk_linux_0.4.4/LibOVR/Src', ])
 
 setup(name='OculusPy',
       version="0.1",

@@ -22,13 +22,18 @@ if not os.path.exists(build_dir):
     os.mkdir(build_dir)
 
 def my_module_gen():
-    include_paths = [base_dir + '/Include', base_dir + '/Src']
+    include_paths = [
+        os.path.join(base_dir, 'Include'),
+        os.path.join(base_dir, 'Src'),
+    ]
     header_files = []
 
     for root, dirs, files in os.walk(base_dir):
         for filename in files:
             if filename.endswith('.h'):
-                header_files.append(root + '/' + filename)
+                header_files.append(
+                    os.path.join(root, filename)
+                )
 
     module_parser = ModuleParser('OVR', '::')
 
@@ -50,7 +55,10 @@ def my_module_gen():
 
     for name, module in modules.iteritems():
         try:
-            outfile = open(build_dir + '/' + name + '.c', 'w')
+            outfile = open(
+                os.path.join(build_dir, name + '.cpp')
+                , 'w'
+            )
             write_preamble(FileCodeSink(outfile))
             module.generate(FileCodeSink(outfile))
             if not outfile.closed:
