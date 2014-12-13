@@ -6,12 +6,13 @@ Based on `PyBindGen`, we auto-generate the Python bindings based on the `ovr_sdk
 
 - Oculus SDK (e.g. `ovr_sdk_linux_0.4.4.tar.gz`). Ideally we can re-generate when a new version of the SDK is released
 - System `gccxml` (i.e. `sudo apt-get install gccxml`)
--`pygccxml` version 1.5.2, due to [this bug](https://bugs.launchpad.net/pybindgen/+bug/1348785) with newer versions of pygccxml.
+- Pip install `pybindgen`
+- A `pygccxml` of [version 1.5.2](https://github.com/gccxml/pygccxml/releases/tag/v1.5.2), due to [this bug](https://bugs.launchpad.net/pybindgen/+bug/1348785) with newer versions of pygccxml.
 
 
 ## Usage
 
-I recommend a using `virtualenv`, so you can install pygccxml and this module in an isolated manner.
+I recommend using `virtualenv`, so you can install pygccxml and this module in an isolated manner.
 
 To generate the bindings, run
 
